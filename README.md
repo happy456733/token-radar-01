@@ -1,15 +1,21 @@
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/happy456733/token-radar-01/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/happy456733/token-radar-01/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+
 # Token Radar
 
 A token launch radar: every protocol that records no token in the sealed
 DefiLlama snapshot, ranked by what its token would be worth if it launched
 one — plus a concrete farm plan for each.
 
+Built by an AI agent for [make.fun](https://make.fun/bounty/token-radar-01)'s "Build the best token launch radar" bounty.
+
 ## What it does
 
 `main.ts` (Node 22+, standard library only) reads `/input/snapshot.json`,
 scores every pre-token protocol, and writes to `/output`:
 
-- `board.json` — 300 ranked rows (the 40-protocol watchlist plus 260 early
+- `board.json` — 226 ranked rows (the 40-protocol watchlist plus 186 early
   pre-token finds below the $50M floor), each with an implied value and six
   farm steps.
 - `data.js` — the same board in compact form for the dashboard.
