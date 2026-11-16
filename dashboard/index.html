@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="sweep" aria-hidden="true"></span><div>
+    <h1>TOKEN RADAR</h1>
+    <p class="tag">Every protocol that records no token, ranked by what its token would be worth.</p>
+  </div></div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="how">
+  <h2>How the radar scores</h2>
+  <p>Implied value = TVL &times; the category&rsquo;s comparable multiple &times; growth &times; tenure.
+  The multiple is the median market-cap-per-TVL of the live-token protocols in the same category,
+  taken from this snapshot — never a hardcoded list of names. Growth is the 7-day TVL change;
+  tenure is how long the protocol has run with no token. Live-token protocols are set apart in the
+  <a href="#view=live">Live tokens</a> view at their market value, never mixed into the ranking.</p>
+  <p class="caveat">A protocol on this board records no token in DefiLlama&rsquo;s data — that is not proof it has none,
+  and the board never predicts whether or when a token is issued. Values are this radar&rsquo;s own claim.</p>
+</section>
+
+<nav class="views" id="views">
+  <button data-view="board" class="active">Pre-token board</button>
+  <button data-view="live">Live tokens</button>
+  <button data-view="model">Value model</button>
+</nav>
+
+<section class="controls" id="controls">
+  <input id="q" type="search" placeholder="Search name or slug…" aria-label="Search protocols">
+  <select id="cat" aria-label="Filter by category"><option value="">All categories</option></select>
+  <select id="chain" aria-label="Filter by chain"><option value="">All chains</option></select>
+  <select id="minTvl" aria-label="Minimum TVL">
+    <option value="0">Any TVL</option>
+    <option value="50000000">TVL ≥ $50M</option>
+    <option value="100000000">TVL ≥ $100M</option>
+    <option value="500000000">TVL ≥ $500M</option>
+    <option value="1000000000">TVL ≥ $1B</option>
+  </select>
+  <span class="count" id="count"></span>
+</section>
+
+<main>
+  <section id="detail" class="detail" hidden></section>
+
+  <table id="board" class="board">
+    <thead><tr>
+      <th data-sort="rank">Rank</th><th data-sort="name">Protocol</th><th data-sort="category">Category</th>
+      <th data-sort="chains">Chains</th><th data-sort="tvl_usd">TVL</th><th data-sort="change_7d">7d</th>
+      <th data-sort="implied_value_usd">Implied value</th><th data-sort="age_days">Tokenless</th><th>Farm plan</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <section id="modelview" class="modelview" hidden></section>
+</main>
+
+<footer>
+  <p>Snapshot: <span id="src"></span>. Model <span id="mver"></span>. Data: DefiLlama protocols, fetched once and sealed.
+  This page makes no network requests; all data is embedded.</p>
+</footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
