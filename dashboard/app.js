@@ -216,4 +216,9 @@
   readHash();
   setView(state.view);
   renderDetail();
+  window.addEventListener('hashchange', function () {
+    readHash();
+    setView(state.view);
+    renderDetail();
+  });
 })();
